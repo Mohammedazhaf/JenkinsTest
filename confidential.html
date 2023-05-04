@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--L' charsetattribut spécifie le codage des caractères pour le document HTML.-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Le titre de la page-->
+        <title>Projet MR</title>
+        <link rel="stylesheet" href="style_principal.css">
+        <!--Contient des icônes qu'on peut importer directement avec la connexion-->
+        <script src="https://kit.fontawesome.com/f6f419588c.js" crossorigin="anonymous"></script>
+    </head>
+    <body> 
+        <!--La tête de page-->
+        <header>
+            <!--"div":  utilisé pour regrouper le contenu afin qu'il puisse être facilement stylé à l'aide des attributs class ou id -->
+            <div class="logo">
+                <h1><span>Azhaf.</span>Kharkhach</h1>
+            </div>
+            <!-- menu responsive -->
+            <div class="toggle-menu"></div>
+            <ul class="menu">
+                <li><a href="histoire.html">Histoire</a></li>
+                <li><a href="evolution.html">Evolution</a></li>
+                <li><a href="confidential.html">Confidentialité</a></li>
+                <li><a href="securite.html">Sécurité sur Internet</a></li>
+                <li><a href="https://github.com/Mohammedazhaf">Projet sur GitHub</a></li>
+            </ul>        
+        </header>
+        <!--Section générique regroupant un même sujet, une même fonctionnalité, de préférence avec un en-tête, ou bien section d'application web-->
+        <section>
+            <!-- div gauche -->
+            <div class="left">
+                <hr>
+                <h1>Confidentialité avec les navigateurs</h1>
+                <main>
+                    <article>
+                        <p>La confidentialité est devenue un enjeu majeur pour les navigateurs Web, car les utilisateurs cherchent de plus en plus à protéger leurs données personnelles en ligne. Les navigateurs modernes offrent plusieurs fonctionnalités pour aider à préserver la confidentialité de l'utilisateur.
+                            Les navigateurs proposent maintenant une navigation privée qui ne stocke pas l'historique de navigation ni les cookies. Cela permet aux utilisateurs de naviguer sur le Web sans que leur activité soit enregistrée sur l'ordinateur ou le navigateur. Les navigateurs peuvent également bloquer les cookies tiers, qui sont des fichiers stockés sur l'ordinateur par des sites tiers pour suivre l'activité de l'utilisateur sur plusieurs sites.
+                            De plus, les navigateurs modernes offrent également une protection contre le pistage, ce qui empêche les annonceurs de suivre l'activité de l'utilisateur sur le Web et de collecter des données personnelles. Les navigateurs peuvent bloquer les scripts de pistage et peuvent également offrir des extensions pour une protection encore plus forte. </p>
+                    </article>
+                </main>
+                <ul class="icons">
+                    <li title="Facebook"><i class="fa-brands fa-facebook"></i></li>
+                    <li title="Youtube"><i class="fa-brands fa-youtube"></i></li>
+                    <li title="Twitter"><i class="fa-brands fa-twitter"></i></li>
+                    <li title="Linkedin"><i class="fa-brands fa-linkedin"></i></li>
+                </ul>
+                <div id="mainback">
+                    <li><a href="index.html">Retour à l'acceuil</a></li>
+                </div>
+            </div>
+            <!--Div droite-->
+            <div class="right">
+                <img src="./images/er.jpg" alt="">
+            </div>
+        </section>
+        <!-- javascript code depuis un autre fichier-->
+        <script src="./script.js"></script>
+    </body>
+</html>
