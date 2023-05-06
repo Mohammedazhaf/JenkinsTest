@@ -1,0 +1,45 @@
+
+- name: Install Docker and create container for React app
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Build Docker image for React app
+      docker_image:
+        name: testj-image
+        path: /path/to/my/react/app
+
+    - name: Run Docker container for React app
+      docker_container:
+        name: testj-container
+        image: testj-image
+        restart_policy: always
+
+- name: "Build a container with ansible"
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: stop current running container
+      command: docker stop testj-container
+      ignore_errors: yes
+
+    - name: remove stopped container
+      command: docker rm testj-container
+      ignore_errors: yes
+
+    - name: remove testj-image
+      command: docker rmi testj
+      ignore_errors: yes
+
+    - name: build docker image using the Dockerfile
+      command: docker build -t testj-image ./JenkinsTest
+
+    - name: Push Image to dockerhub
+      command: docker push testj-image
+
+    - name: run container
+      command: docker run -d --name testj-container -p 5000:80 testj-image
