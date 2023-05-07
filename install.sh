@@ -1,47 +1,45 @@
 #!/bin/bash
 
-sudo apt-get update
+# Mise à jour des paquets
+sudo apt update
 
-sudo apt-get install -y apache2
+# Installation d'Apache2
+sudo apt install apache2 -y
 
-sudo apt-get update -y
+# Installation de Java 11 JDK
+sudo apt install openjdk-11-jdk -y
 
-sudo apt-get install -y openjdk-11-jdk
+# Ajout de la clé GPG de Jenkins
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java
-
-sudo rm /etc/apt/sources.list.d/jenkins.list
-
+# Ajout du dépôt Jenkins à la liste des sources APT
 echo "deb https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
 
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9B7D32F2D50582E6
+# Mise à jour des paquets pour prendre en compte les nouveaux dépôts
+sudo apt update
 
-sudo apt-get update -y
+# Installation de Jenkins
+sudo apt install jenkins -y
 
-sudo apt-get install -y jenkins
+# Installation des paquets nécessaires pour Docker
+sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release -y
 
-sudo apt-get update -y
-
-sudo apt-get install -y \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-
+# Ajout de la clé GPG de Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
+# Ajout du dépôt Docker à la liste des sources APT
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-sudo apt-get update -y
+# Mise à jour des paquets pour prendre en compte les nouveaux dépôts
+sudo apt update
 
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+# Installation de Docker et de ses dépendances
+sudo apt install docker-ce docker-ce-cli containerd.io -y
 
-sudo groupadd docker
-
+# Ajout de l'utilisateur courant au groupe docker
 sudo usermod -aG docker $USER
 
-newgrp docker 
-
-sudo chmod 666 /var/run/docker.sock
+# Redémarrage du service Jenkins
+sudo systemctl restart jenkins
