@@ -2,6 +2,11 @@ sudo apt-get update
 
 sudo apt-get install apache2
 
+systemctl status apache2
+
+
+
+
 sudo apt update -y
 
 sudo apt install openjdk-11-jdk -y
@@ -12,15 +17,19 @@ JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java
 
 export JAVA_HOME
 
-sudo rm /etc/apt/sources.list.d/jenkins.list
 
 echo "deb https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
 
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9B7D32F2D50582E6
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5BA31D57EF5975CA
 
 sudo apt-get update
 
 sudo apt-get install jenkins
+
+systemctl status
+
+
+
 
 sudo apt-get update
 
